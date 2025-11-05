@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>До 15.11!</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
+    #countdown {
+      font-size: 2.5em;
+      margin: 20px 0;
+    }
+    #quote {
+      font-size: 1.8em;
+      max-width: 80%;
+    }
+  </style>
+</head>
+<body id="body">
+  <h1>До великого дня!</h1>
+  <div id="countdown"></div>
+  <div id="quote"></div>
+
+  <script>
+    // Цели: 15 ноября 2025, 00:00:00
+    const targetDate = new Date('2025-11-15T00:00:00');
+
+    // Мотивационные цитаты (можно расширить)
+    const quotes = [
+      { text: "Великие дела начинаются с малого шага.", bg: "https://images.unsplash.com/photo-1499750310107-5fef28a66643" },
+      { text: "Ты — автор своей жизни. Пиши смело.", bg: "https://images.unsplash.com/photo-1501854140801-50d01698950b" },
+      { text: "15 ноября изменит всё. Готовься.", bg: "https://images.unsplash.com/photo-1470240730264-3a951de091a7" },
+      { text: "Твоя решимость важнее обстоятельств.", bg: "https://images.unsplash.com/photo-1476820865390-c52aeebb9891" },
+      { text: "Сегодня — день, когда всё начинается.", bg: "https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5" }
+    ];
+
+    // Выбираем случайную цитату
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    document.getElementById('quote').innerText = randomQuote.text;
+    document.getElementById('body').style.backgroundImage = `url(${randomQuote.bg}?auto=format&fit=crop&w=1920&q=80)`;
+
+    // Обратный отсчёт
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById('countdown').innerText = "Сегодня — день!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('countdown').innerText =
+        `${days}д ${hours}ч ${mins}м ${secs}с`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
