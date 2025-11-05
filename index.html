@@ -30,7 +30,7 @@
   </style>
 </head>
 <body id="body">
-  <h1>До великого дня!</h1>
+  <h1>До великого дня осталось:</h1>
   <div id="countdown"></div>
   <div id="quote"></div>
 
@@ -78,7 +78,7 @@
 
   // Тематические теги для Unsplash (через запятую, без пробелов)
   const keywords = "inspiration,motivation,sunrise,mountains,sky,success,future,journey,light";
-  const bgUrl = `https://source.unsplash.com/1920x1080/?${keywords}`;
+  const bgUrl = `https://source.unsplash.com/random/1920x1080/?${keywords}`;
 
   // Загрузка фона с fallback на случай ошибки
   const body = document.getElementById('body');
@@ -115,4 +115,5 @@
 </script>
 </body>
 </html>
+
 
